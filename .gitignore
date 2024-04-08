@@ -1,0 +1,8 @@
+/raw_data.csv
+/intermediate_data.csv
+/final_data.csv
+/evaluated_data
+/downloaded_data.csv
+/ground_truth.csv
+/computed_data.csv
+/r_squared.txt

@@ -1,0 +1,31 @@
+stages:
+  download:
+    cmd: python3 download.py
+    deps:
+    - download.py
+    outs:
+    - downloaded_data.csv
+  prepare:
+    cmd: python3 prepare.py downloaded_data.csv params.yaml
+    deps:
+    - downloaded_data.csv
+    - params.yaml
+    - prepare.py
+    outs:
+    - ground_truth.csv
+  process:
+    cmd: python3 process.py downloaded_data.csv ground_truth.csv
+    deps:
+    - downloaded_data.csv
+    - ground_truth.csv
+    - process.py
+    outs:
+    - computed_data.csv
+  evaluate:
+    cmd: python3 evaluate.py ground_truth.csv computed_data.csv
+    deps:
+    - computed_data.csv
+    - evaluate.py
+    - ground_truth.csv
+    outs:
+    - r_squared.txt
